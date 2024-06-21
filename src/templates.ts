@@ -122,7 +122,7 @@ export const base = (
 </html>
 `;
 
-const blurb = "Yet another programming blog by Alex Kladov aka mahmudsudo.";
+const blurb = "Yet another programming blog by Mahmud Bello aka mahmudsudo.";
 
 export function page(name: string, content: HtmlString) {
   return base({
@@ -215,8 +215,8 @@ export const feed = (posts: Post[]): HtmlString => {
 <updated>${new Date().toISOString()}</updated>
 <id>${site_url}/feed.xml</id>
 <title type="html">mahmudsudo</title>
-<subtitle>Yet another programming blog by Alex Kladov aka mahmudsudo.</subtitle>
-<author><name>Alex Kladov</name></author>
+<subtitle>Yet another programming blog by Mahmud Bello aka mahmudsudo.</subtitle>
+<author><name>Mahmud Bello</name></author>
 ${entries}
 </feed>
 `;
@@ -230,7 +230,7 @@ export const feed_entry = (post: Post): HtmlString => {
 <published>${yyyy_mm_dd(post.date)}T00:00:00+00:00</published>
 <updated>${yyyy_mm_dd(post.date)}T00:00:00+00:00</updated>
 <id>${site_url}${post.path.replace(".html", "")}</id>
-<author><name>Alex Kladov</name></author>
+<author><name>Mahmud Bello</name></author>
 <summary type="html"><![CDATA[${post.summary}]]></summary>
 <content type="html" xml:base="${site_url}${post.path}"><![CDATA[${post.content}]]></content>
 </entry>
