@@ -1,28 +1,39 @@
-name: CI
+name: Deploy
+
 on:
   push:
-    branches:
-    - master
+    branches: [master]
+  workflow_dispatch:
 
-  schedule:
-    - cron: "0 0 * * *"
+permissions:
+  contents: write
 
 jobs:
-  CI:
+  deploy:
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v2
-    - uses: denoland/setup-deno@v1
-      with:
-        deno-version: v1.x
+      - uses: actions/checkout@v4
 
-    - run: deno task build
+      - name: Check that local links and assets resolve
+        run: |
+          python3 - <<'PY'
+          import re, pathlib, sys
+          root = pathlib.Path("site")
+          bad = []
+          for page in root.glob("*.html"):
+              html = page.read_text()
+              for ref in re.findall(r'(?:href|src)="(/[^"#?]*)', html):
+                  target = root / ref.lstrip("/")
+                  if ref != "/" and not target.exists():
+                      bad.append(f"{page}: {ref}")
+          if bad:
+              print("\n".join(bad)); sys.exit(1)
+          PY
 
-    - name: Deploy
-      uses: peaceiris/actions-gh-pages@364c31d33bb99327c77b3a5438a83a357a6729ad # v3.4.0
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_branch: gh-pages
-        publish_dir: out/res
-        force_orphan: true
+      - name: Publish to gh-pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: site
+          force_orphan: true

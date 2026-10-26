@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://mahmudsudo.github.io/sitemap.xml

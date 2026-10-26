@@ -1,0 +1,235 @@
+/* mahmudsudo.github.io: hand-written, no build step, no JS. */
+
+@font-face {
+  font-family: "EB Garamond";
+  src: url("../fonts/EBGaramond-400-Normal.woff2") format("woff2");
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "EB Garamond";
+  src: url("../fonts/EBGaramond-400-Italic.woff2") format("woff2");
+  font-weight: 400; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: "EB Garamond";
+  src: url("../fonts/EBGaramond-700-Normal.woff2") format("woff2");
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("../fonts/JetBrainsMono-400-Normal.woff2") format("woff2");
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("../fonts/JetBrainsMono-700-Normal.woff2") format("woff2");
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+
+:root {
+  --bg: #f6f3ec;
+  --bg-raised: #fbf9f4;
+  --ink: #1b1a17;
+  --muted: #625e54;
+  --rule: #d9d3c4;
+  --accent: #9a3b1f;
+  --accent-ink: #fff;
+  --serif: "EB Garamond", Georgia, "Times New Roman", serif;
+  --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #121311;
+    --bg-raised: #191a17;
+    --ink: #ece8dc;
+    --muted: #a09b8e;
+    --rule: #2d2e29;
+    --accent: #e8926a;
+    --accent-ink: #121311;
+    color-scheme: dark;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 4rem; -webkit-text-size-adjust: 100%; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  line-height: 1.55;
+  font-kerning: normal;
+  text-rendering: optimizeLegibility;
+}
+
+a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 0.18em; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+.skip {
+  position: absolute; left: 1rem; top: -4rem;
+  background: var(--accent); color: var(--accent-ink);
+  padding: 0.5rem 0.9rem; font-family: var(--mono); font-size: 0.85rem; z-index: 10;
+}
+.skip:focus { top: 1rem; }
+
+.wrap { max-width: 56rem; margin: 0 auto; padding: 0 1.25rem; }
+
+/* ---------- top bar ---------- */
+.bar {
+  position: sticky; top: 0; z-index: 5;
+  background: color-mix(in srgb, var(--bg) 92%, transparent);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--rule);
+}
+.bar .wrap { display: flex; align-items: center; gap: 1.25rem; min-height: 3rem; flex-wrap: wrap; }
+.bar .brand { font-family: var(--mono); font-weight: 700; font-size: 0.85rem; color: var(--ink); text-decoration: none; margin-right: auto; }
+.bar nav { display: flex; gap: 1.25rem; flex-wrap: wrap; }
+.bar nav a { font-family: var(--mono); font-size: 0.8rem; color: var(--muted); text-decoration: none; padding: 0.35rem 0; }
+.bar nav a:hover { color: var(--ink); text-decoration: underline; }
+
+/* ---------- hero ---------- */
+.hero { padding: 4.5rem 0 3rem; }
+.eyebrow {
+  font-family: var(--mono); font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--muted); margin: 0 0 1.25rem;
+}
+.eyebrow .dot { display: inline-block; width: 0.55rem; height: 0.55rem; border-radius: 50%; background: #3f8f5b; margin-right: 0.55rem; vertical-align: 0.05em; }
+h1 {
+  font-size: clamp(2.8rem, 8vw, 5rem); line-height: 1; letter-spacing: -0.02em;
+  font-weight: 700; margin: 0 0 1.25rem;
+}
+.lede { font-size: clamp(1.45rem, 3.4vw, 2rem); line-height: 1.25; margin: 0 0 1.5rem; max-width: 34ch; }
+.lede em { color: var(--accent); font-style: italic; }
+.print-only { display: none; }
+.intro { max-width: 60ch; color: var(--ink); margin: 0 0 2rem; }
+
+.actions { display: flex; gap: 0.75rem; flex-wrap: wrap; margin: 0 0 3rem; }
+.btn {
+  font-family: var(--mono); font-size: 0.85rem; text-decoration: none;
+  padding: 0.65rem 1rem; border: 1px solid var(--ink); color: var(--ink); border-radius: 2px;
+}
+.btn:hover { background: var(--ink); color: var(--bg); text-decoration: none; }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.btn.primary:hover { background: var(--ink); border-color: var(--ink); color: var(--bg); }
+
+.facts {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+  gap: 0; margin: 0; padding: 0; list-style: none;
+  border-top: 1px solid var(--ink); border-bottom: 1px solid var(--rule);
+}
+.facts li { padding: 1rem 1rem 1rem 0; }
+.facts b { display: block; font-size: 1.9rem; line-height: 1.1; letter-spacing: -0.01em; }
+.facts span { display: block; font-size: 0.95rem; line-height: 1.3; color: var(--muted); margin-top: 0.25rem; }
+
+/* ---------- sections ---------- */
+section.block {
+  display: grid; grid-template-columns: 11rem 1fr; gap: 0 2rem;
+  padding: 3rem 0; border-top: 1px solid var(--rule);
+}
+section.block > h2 {
+  font-family: var(--mono); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--muted); margin: 0.45rem 0 0;
+}
+@media (max-width: 44rem) {
+  section.block { grid-template-columns: 1fr; padding: 2.25rem 0; }
+  section.block > h2 { margin-bottom: 1.25rem; }
+}
+
+.entry { margin: 0 0 2.25rem; break-inside: avoid; }
+.entry:last-child { margin-bottom: 0; }
+.entry h3 { font-size: 1.35rem; line-height: 1.25; margin: 0; font-weight: 700; }
+.entry .org { color: var(--muted); font-weight: 400; }
+.entry .meta { font-family: var(--mono); font-size: 0.78rem; color: var(--muted); margin: 0.25rem 0 0.6rem; }
+.entry p, .entry ul { margin: 0.4rem 0 0; }
+.entry ul { padding-left: 1.1rem; }
+.entry li { margin: 0.3rem 0; padding-left: 0.2rem; }
+.entry li::marker { color: var(--accent); }
+
+/* ---------- projects ---------- */
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(16.5rem, 1fr)); gap: 1rem; margin: 0 0 2.5rem; padding: 0; list-style: none; }
+.card {
+  background: var(--bg-raised); border: 1px solid var(--rule); border-radius: 3px;
+  padding: 1.1rem 1.15rem 1rem; display: flex; flex-direction: column; break-inside: avoid;
+}
+.card h3 { font-family: var(--mono); font-size: 1rem; margin: 0 0 0.5rem; }
+.card h3 a { color: var(--ink); text-decoration: none; }
+.card h3 a:hover { color: var(--accent); text-decoration: underline; }
+.card p { margin: 0 0 0.9rem; font-size: 1.05rem; line-height: 1.45; }
+.card .tags { margin: auto 0 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 0.35rem; }
+.card .tags li { font-family: var(--mono); font-size: 0.7rem; color: var(--muted); border: 1px solid var(--rule); padding: 0.1rem 0.45rem; border-radius: 2px; }
+.card .links { font-family: var(--mono); font-size: 0.75rem; margin: 0 0 0.75rem; display: flex; gap: 0.9rem; flex-wrap: wrap; }
+
+.sub { font-family: var(--mono); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin: 0 0 1rem; }
+.more { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--rule); }
+.more li { display: grid; grid-template-columns: 9.5rem 1fr; gap: 0.25rem 1.25rem; padding: 0.7rem 0; border-bottom: 1px solid var(--rule); font-size: 1.05rem; line-height: 1.4; }
+.more code, .more a.name { font-family: var(--mono); font-size: 0.9rem; font-weight: 700; }
+.more a.name { text-decoration: none; }
+.more a.name:hover { text-decoration: underline; }
+@media (max-width: 36rem) { .more li { grid-template-columns: 1fr; } }
+
+/* ---------- skills / credentials ---------- */
+.defs { margin: 0; display: grid; grid-template-columns: 9rem 1fr; gap: 0.8rem 1.5rem; }
+.defs dt { font-family: var(--mono); font-size: 0.8rem; color: var(--muted); padding-top: 0.3rem; }
+.defs dd { margin: 0; }
+@media (max-width: 36rem) { .defs { grid-template-columns: 1fr; gap: 0.1rem; } .defs dd { margin-bottom: 0.9rem; } }
+
+.plain { margin: 0; padding-left: 1.1rem; }
+.plain li { margin: 0.35rem 0; padding-left: 0.2rem; }
+.plain li::marker { color: var(--accent); }
+
+/* ---------- contact ---------- */
+.contact-big { font-size: clamp(1.5rem, 4vw, 2.1rem); line-height: 1.2; margin: 0 0 1.25rem; word-break: break-word; }
+.contact-list { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; font-family: var(--mono); font-size: 0.85rem; margin: 0; padding: 0; list-style: none; }
+
+footer { border-top: 1px solid var(--rule); padding: 1.5rem 0 3rem; font-family: var(--mono); font-size: 0.75rem; color: var(--muted); }
+footer .wrap { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+
+/* ---------- print (this is also what generates resume.pdf) ---------- */
+@media print {
+  :root { --bg: #fff; --bg-raised: #fff; --ink: #111; --muted: #444; --rule: #bbb; --accent: #7a2c14; color-scheme: light; }
+  @page { size: A4; margin: 13mm 14mm; }
+  html { scroll-padding-top: 0; }
+  body { font-size: 10pt; line-height: 1.38; }
+  .bar, .skip, .actions, footer, #contact .contact-big { display: none; }
+  .wrap { max-width: none; padding: 0; }
+  .hero { padding: 0 0 0.8rem; }
+  h1 { font-size: 26pt; margin-bottom: 0.4rem; }
+  .eyebrow { margin-bottom: 0.4rem; font-size: 7.5pt; }
+  .lede { font-size: 13pt; margin-bottom: 0.5rem; max-width: none; }
+  .intro { margin-bottom: 0.8rem; max-width: none; }
+  .facts li { padding: 0.5rem 0.5rem 0.5rem 0; }
+  .facts b { font-size: 14pt; }
+  .facts span { font-size: 8pt; }
+  section.block { grid-template-columns: 26mm 1fr; gap: 0 5mm; padding: 0.45rem 0; }
+  section.block > h2 { font-size: 7.5pt; }
+  .entry { margin-bottom: 0.45rem; }
+  body { line-height: 1.32; }
+  .entry h3 { font-size: 11pt; }
+  .entry .meta { font-size: 7.5pt; margin-bottom: 0.2rem; }
+  .cards { grid-template-columns: 1fr 1fr 1fr; gap: 0.35rem; margin-bottom: 0.6rem; }
+  .card { padding: 0.45rem 0.6rem; }
+  .card h3 { font-size: 9pt; margin-bottom: 0.2rem; }
+  .card p { font-size: 8pt; margin-bottom: 0.3rem; line-height: 1.3; }
+  .card .links, .card .tags { display: none; }
+  .more li { padding: 0.25rem 0; font-size: 8.5pt; grid-template-columns: 24mm 1fr; }
+  .more code, .more a.name { font-size: 8pt; }
+  .sub { font-size: 7.5pt; margin-bottom: 0.4rem; }
+  a { color: inherit; text-decoration: none; }
+  .noprint { display: none; }
+  .facts { grid-template-columns: repeat(4, 1fr); }
+  .facts li { padding: 0.4rem 0.5rem 0.4rem 0; }
+  .defs { grid-template-columns: 26mm 1fr; gap: 0.3rem 5mm; }
+  .defs dt { font-size: 7.5pt; padding-top: 0.15rem; }
+  .contact-list { font-size: 8pt; gap: 0.2rem 1rem; }
+  .entry li, .plain li { margin: 0.15rem 0; }
+  code { font-size: 0.9em; }
+  .print-only { display: block; font-family: var(--mono); font-size: 8pt; margin: 0 0 0.6rem; }
+  section#contact { break-inside: avoid; }
+}
