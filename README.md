@@ -7,7 +7,8 @@ site/
   index.html     the whole site (also the source of resume.pdf via its print stylesheet)
   css/style.css  light and dark themes, print styles
   fonts/         self-hosted EB Garamond and JetBrains Mono
-  resume.pdf     generated from index.html, see below
+  js/            theme toggle, project filter, copy buttons, analytics (all optional enhancements)
+  resume.pdf     generated from index.html with `npm run resume`
   og.png         social preview image
 ```
 
@@ -19,11 +20,16 @@ $ python3 -m http.server -d site 8080
 
 ## Update the resume PDF
 
-The PDF is the homepage rendered with its `@media print` styles:
+`site/resume.pdf` is the homepage rendered with its `@media print` styles, so it always matches the website.
+After changing `site/index.html` or `site/css/style.css`, regenerate it:
 
 ```console
-$ npx playwright pdf --paper-format=A4 site/index.html site/resume.pdf
+$ npm install                      # first time only
+$ npx playwright install chromium  # first time only
+$ npm run resume
 ```
+
+Commit the new `site/resume.pdf` together with the change.
 
 ## Analytics
 
@@ -35,5 +41,6 @@ post or application brought each visit.
 
 ## Deploy
 
-`.github/workflows/ci.yml` publishes `site/` to the `gh-pages` branch on every push to `master`.
-In the repository settings, Pages should be set to deploy from the `gh-pages` branch.
+`.github/workflows/static.yml` publishes `site/` with GitHub Pages on every push to `main`, after checking that
+every local link and asset in the HTML files exists. In the repository settings, Pages should use
+**Source: GitHub Actions**.

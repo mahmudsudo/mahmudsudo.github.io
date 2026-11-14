@@ -27,6 +27,8 @@
     else queue.push([path, title]);
   };
 
+  window.track = send;                                     // used by site.js for custom events
+
   const s = document.createElement("script");
   s.async = true;
   s.src = "https://gc.zgo.at/count.js";

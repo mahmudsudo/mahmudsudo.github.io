@@ -40,7 +40,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --bg: #121311;
     --bg-raised: #191a17;
     --ink: #ece8dc;
@@ -50,6 +50,16 @@
     --accent-ink: #121311;
     color-scheme: dark;
   }
+}
+:root[data-theme="dark"] {
+  --bg: #121311;
+  --bg-raised: #191a17;
+  --ink: #ece8dc;
+  --muted: #a09b8e;
+  --rule: #2d2e29;
+  --accent: #e8926a;
+  --accent-ink: #121311;
+  color-scheme: dark;
 }
 
 * { box-sizing: border-box; }
@@ -192,9 +202,47 @@ section.block > h2 {
 footer { border-top: 1px solid var(--rule); padding: 1.5rem 0 3rem; font-family: var(--mono); font-size: 0.75rem; color: var(--muted); }
 footer .wrap { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
 
+
+[hidden] { display: none !important; }
+
+/* ---------- interactive extras (all progressive enhancement) ---------- */
+.bar nav a[aria-current="true"] { color: var(--ink); text-decoration: underline; text-decoration-color: var(--accent); text-decoration-thickness: 2px; text-underline-offset: 0.35em; }
+.theme {
+  font-family: var(--mono); font-size: 0.95rem; line-height: 1; width: 2.1rem; height: 2.1rem;
+  display: inline-grid; place-items: center; cursor: pointer;
+  background: transparent; color: var(--muted); border: 1px solid var(--rule); border-radius: 2px;
+}
+.theme:hover { color: var(--ink); border-color: var(--ink); }
+
+.filters { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0 0 1.25rem; }
+.chip {
+  font-family: var(--mono); font-size: 0.75rem; padding: 0.4rem 0.8rem; cursor: pointer;
+  background: transparent; color: var(--muted); border: 1px solid var(--rule); border-radius: 99px;
+}
+.chip:hover { color: var(--ink); border-color: var(--ink); }
+.chip[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.filter-status { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+.card { transition: border-color 0.15s ease; }
+.card:hover { border-color: var(--muted); }
+.install {
+  display: flex; align-items: center; gap: 0.5rem; margin: 0 0 0.9rem;
+  font-family: var(--mono); font-size: 0.74rem;
+  background: var(--bg); border: 1px solid var(--rule); border-radius: 2px; padding: 0.3rem 0.3rem 0.3rem 0.6rem;
+}
+.install code { flex: 1; overflow-x: auto; white-space: nowrap; }
+.install button {
+  font-family: var(--mono); font-size: 0.7rem; cursor: pointer; padding: 0.25rem 0.55rem;
+  background: transparent; color: var(--ink); border: 1px solid var(--rule); border-radius: 2px;
+}
+.install button:hover { border-color: var(--ink); }
+
+.allrepos { margin-top: 1.25rem; font-family: var(--mono); font-size: 0.8rem; }
+.flush { margin: 0; }
+
 /* ---------- print (this is also what generates resume.pdf) ---------- */
 @media print {
-  :root { --bg: #fff; --bg-raised: #fff; --ink: #111; --muted: #444; --rule: #bbb; --accent: #7a2c14; color-scheme: light; }
+  :root, :root[data-theme] { --bg: #fff; --bg-raised: #fff; --ink: #111; --muted: #444; --rule: #bbb; --accent: #7a2c14; color-scheme: light; }
   @page { size: A4; margin: 11mm 13mm; }
   html { scroll-padding-top: 0; }
   body { font-size: 9.2pt; line-height: 1.34; }
@@ -237,6 +285,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 1rem; flex-wr
   .sub { font-size: 7.5pt; margin-bottom: 0.4rem; }
   a { color: inherit; text-decoration: none; }
   .noprint { display: none; }
+  .theme, .filters, .install { display: none; }
   .facts { grid-template-columns: repeat(4, 1fr); }
   .facts li { padding: 0.4rem 0.5rem 0.4rem 0; }
   .defs { grid-template-columns: 26mm 1fr; gap: 0.3rem 5mm; }

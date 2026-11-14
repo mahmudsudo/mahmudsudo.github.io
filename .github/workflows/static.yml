@@ -31,12 +31,26 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Check that local links and assets resolve
+        run: |
+          python3 - <<'PY'
+          import re, pathlib, sys
+          root = pathlib.Path("site")
+          bad = []
+          for page in root.glob("*.html"):
+              html = page.read_text()
+              for ref in re.findall(r'(?:href|src)="(/[^"#?]*)', html):
+                  if ref != "/" and not (root / ref.lstrip("/")).exists():
+                      bad.append(f"{page}: {ref}")
+          if bad:
+              print("\n".join(bad)); sys.exit(1)
+          PY
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload entire repository
+          # Only the site/ folder is published
           path: './site/'
       - name: Deploy to GitHub Pages
         id: deployment

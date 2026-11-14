@@ -3,6 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://gc.zgo.at; connect-src https://*.goatcounter.com; img-src 'self' data: https://*.goatcounter.com; style-src 'self'; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
+  <meta name="color-scheme" content="light dark">
   <title>Mahmud Bello | Systems Engineer, Rust and Cryptography</title>
   <meta name="description" content="Mahmud Bello is a systems engineer in Lagos building protocols, cryptography and developer tooling in Rust. 6+ years of production Rust and C++, open-source crates, and distributed systems work.">
   <meta name="author" content="Mahmud Bello">
@@ -23,8 +25,10 @@
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="/fonts/EBGaramond-400-Normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/EBGaramond-700-Normal.woff2" as="font" type="font/woff2" crossorigin>
+  <script src="/js/theme-init.js"></script>
   <link rel="stylesheet" href="/css/style.css">
   <script src="/js/analytics.js" defer></script>
+  <script src="/js/site.js" defer></script>
 
   <script type="application/ld+json">
   {
@@ -179,33 +183,33 @@
       <h2 id="h-projects">Projects</h2>
       <div>
         <ul class="cards">
-          <li class="card">
+          <li class="card" data-cat="systems" data-install="cargo add circuit_breaker">
             <h3><a href="https://crates.io/crates/circuit_breaker">circuit_breaker</a></h3>
             <p>The circuit breaker pattern for building resilient, fault-tolerant Rust services. My most-downloaded crate, past 29,000 downloads.</p>
             <ul class="tags"><li>Rust</li><li>reliability</li><li>crates.io</li></ul>
           </li>
-          <li class="card">
+          <li class="card" data-cat="tools" data-install="cargo add fastrs-core">
             <h3><a href="https://github.com/mahmudsudo/fast_rs">fastrs</a></h3>
             <p>A FastAPI-style framework for Rust on Axum. Request validation and OpenAPI docs generated at compile time, with zero runtime overhead.</p>
             <p class="links"><a href="https://github.com/mahmudsudo/fast_rs">GitHub</a><a href="https://crates.io/crates/fastrs-core">crates.io</a></p>
             <ul class="tags"><li>Rust</li><li>Axum</li><li>proc macros</li><li>OpenAPI</li></ul>
           </li>
-          <li class="card">
+          <li class="card" data-cat="tools">
             <h3><a href="https://github.com/mahmudsudo/aml_rs">aml_rs</a></h3>
             <p>Abstract Modeling Language: a correct-by-construction configuration language. Strict types, schemas, safe defaults and native migrations, fixing YAML's "Norway problem" at the root.</p>
             <ul class="tags"><li>Rust</li><li>parsers</li><li>WASM</li><li>MIT</li></ul>
           </li>
-          <li class="card">
+          <li class="card" data-cat="crypto">
             <h3><a href="https://github.com/mahmudsudo/qexpose">qexpose</a></h3>
             <p>Scans Bitcoin UTXO sets for quantum exposure and benchmarks post-quantum signatures. Three-crate workspace built for Galaxy Research's Bitcoin quantum readiness grant.</p>
             <ul class="tags"><li>Rust</li><li>Bitcoin</li><li>post-quantum</li></ul>
           </li>
-          <li class="card">
+          <li class="card" data-cat="agents">
             <h3><a href="https://github.com/mahmudsudo/agentest-rs">agentest-rs</a></h3>
             <p>A testing framework for AI agents, structured as a four-crate Rust workspace. Built for the TestMu AI grant.</p>
             <ul class="tags"><li>Rust</li><li>AI agents</li><li>testing</li></ul>
           </li>
-          <li class="card">
+          <li class="card" data-cat="crypto">
             <h3>FROST threshold signing SDK</h3>
             <p>Developer-friendly threshold signatures wrapping the Zcash Foundation's audited FROST stack. Active Zcash Community Grant.</p>
             <ul class="tags"><li>Rust</li><li>FROST</li><li>cryptography</li></ul>
@@ -214,18 +218,18 @@
 
         <h3 class="sub">More work</h3>
         <ul class="more">
-          <li><a class="name" href="https://crates.io/crates/daemon_rs">daemon_rs</a><span>High-performance structured logging daemon with Parquet storage.</span></li>
-          <li><a class="name" href="https://crates.io/crates/rate_rs">rate_rs</a><span>Universal rate limiting library for Rust web frameworks.</span></li>
-          <li><a class="name" href="https://crates.io/crates/agenticrs">agenticrs</a><span>Resilience and observability layer for LLM and agentic workflows.</span></li>
-          <li><a class="name" href="https://crates.io/crates/structura_rs">structura_rs</a><span>Advanced data structures behind one unified, no_std-friendly API.</span></li>
-          <li><a class="name" href="https://crates.io/crates/cargomon">cargomon</a><span>nodemon for Rust: rebuilds and reruns your project when files change.</span></li>
-          <li><a class="name" href="https://github.com/mahmudsudo/rye_rs">rye_rs</a><span>Laravel and Phoenix-style fullstack framework with CLI scaffolding for Axum or Actix on Postgres, MySQL or SQLite.</span></li>
-          <li><a class="name" href="https://github.com/mahmudsudo/social_rs">social_rs</a><span>Reliability-focused social media connector for AI agents, with a RiskGate layer for safe actions.</span></li>
-          <li><code>patch-rs</code><span>Section-aware ELF binary patching: swap function instructions in place without re-linking.</span></li>
-          <li><code>github-code-pusher</code><span>Agentic tooling that pushes code to GitHub for streamlined CI/CD operations.</span></li>
-          <li><a class="name" href="https://www.npmjs.com/package/hone-skill">hone</a><span>A comprehension gate for AI-assisted coding, published on npm as <code>hone-skill</code>.</span></li>
+          <li data-cat="systems"><a class="name" href="https://crates.io/crates/daemon_rs">daemon_rs</a><span>High-performance structured logging daemon with Parquet storage.</span></li>
+          <li data-cat="systems"><a class="name" href="https://crates.io/crates/rate_rs">rate_rs</a><span>Universal rate limiting library for Rust web frameworks.</span></li>
+          <li data-cat="agents"><a class="name" href="https://crates.io/crates/agenticrs">agenticrs</a><span>Resilience and observability layer for LLM and agentic workflows.</span></li>
+          <li data-cat="tools"><a class="name" href="https://crates.io/crates/structura_rs">structura_rs</a><span>Advanced data structures behind one unified, no_std-friendly API.</span></li>
+          <li data-cat="tools"><a class="name" href="https://crates.io/crates/cargomon">cargomon</a><span>nodemon for Rust: rebuilds and reruns your project when files change.</span></li>
+          <li data-cat="tools"><a class="name" href="https://github.com/mahmudsudo/rye_rs">rye_rs</a><span>Laravel and Phoenix-style fullstack framework with CLI scaffolding for Axum or Actix on Postgres, MySQL or SQLite.</span></li>
+          <li data-cat="agents"><a class="name" href="https://github.com/mahmudsudo/social_rs">social_rs</a><span>Reliability-focused social media connector for AI agents, with a RiskGate layer for safe actions.</span></li>
+          <li data-cat="systems"><code>patch-rs</code><span>Section-aware ELF binary patching: swap function instructions in place without re-linking.</span></li>
+          <li data-cat="agents tools"><code>github-code-pusher</code><span>Agentic tooling that pushes code to GitHub for streamlined CI/CD operations.</span></li>
+          <li data-cat="agents tools"><a class="name" href="https://www.npmjs.com/package/hone-skill">hone</a><span>A comprehension gate for AI-assisted coding, published on npm as <code>hone-skill</code>.</span></li>
         </ul>
-        <p class="noprint" style="margin-top:1.25rem;font-family:var(--mono);font-size:.8rem;">
+        <p class="noprint allrepos">
           All crates: <a href="https://crates.io/users/mahmudsudo">crates.io/users/mahmudsudo</a> ·
           All repos: <a href="https://github.com/mahmudsudo?tab=repositories">github.com/mahmudsudo</a>
         </p>
@@ -299,7 +303,7 @@
 
     <section class="block" id="writing" aria-labelledby="h-writing">
       <h2 id="h-writing">Writing</h2>
-      <p style="margin:0">
+      <p class="flush">
         I write up the technical problems I run into, covering Rust, protocols, security and infrastructure, at
         <a href="https://mahmudsudo.hashnode.dev">mahmudsudo.hashnode.dev</a>.
       </p>
