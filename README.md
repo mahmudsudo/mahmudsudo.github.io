@@ -25,6 +25,14 @@ The PDF is the homepage rendered with its `@media print` styles:
 $ npx playwright pdf --paper-format=A4 site/index.html site/resume.pdf
 ```
 
+## Analytics
+
+`site/js/analytics.js` sends page views and a few interaction events (outbound clicks, email, resume
+download, section views, scroll depth) to [GoatCounter](https://www.goatcounter.com): no cookies, no personal data,
+no consent banner. Set `CODE` at the top of that file to your GoatCounter site code to switch it on. It stays
+off on localhost and for visitors with Do Not Track enabled. Tag shared links like `/?ref=linkedin` to see which
+post or application brought each visit.
+
 ## Deploy
 
 `.github/workflows/ci.yml` publishes `site/` to the `gh-pages` branch on every push to `master`.

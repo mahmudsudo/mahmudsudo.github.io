@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Mahmud Bello | Systems Engineer,Developer Relations , Forward Deployed Engineer , Rust and Cryptography</title>
+  <title>Mahmud Bello | Systems Engineer, Rust and Cryptography</title>
   <meta name="description" content="Mahmud Bello is a systems engineer in Lagos building protocols, cryptography and developer tooling in Rust. 6+ years of production Rust and C++, open-source crates, and distributed systems work.">
   <meta name="author" content="Mahmud Bello">
   <link rel="canonical" href="https://mahmudsudo.github.io/">
@@ -24,6 +24,7 @@
   <link rel="preload" href="/fonts/EBGaramond-400-Normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/EBGaramond-700-Normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/analytics.js" defer></script>
 
   <script type="application/ld+json">
   {
@@ -32,14 +33,14 @@
     "name": "Mahmud Bello",
     "alternateName": "mahmudsudo",
     "url": "https://mahmudsudo.github.io/",
-    "jobTitle": "Systems Engineer ,,Developer Relations , Forward Deployed Engineer",
+    "jobTitle": "Systems Engineer",
     "email": "mailto:blinkztyler@gmail.com",
     "address": { "@type": "PostalAddress", "addressLocality": "Lagos", "addressCountry": "NG" },
     "alumniOf": [
       { "@type": "CollegeOrUniversity", "name": "Federal University of Agriculture, Abeokuta (FUNAAB)" },
       { "@type": "EducationalOrganization", "name": "Stanford Online" }
     ],
-    "knowsAbout": ["Rust", "C++", "Distributed systems", "Protocol engineering", "Cryptography", "Threshold signatures", "Zero-knowledge proofs", "Developer tooling","Developer Engineering" "Security research"],
+    "knowsAbout": ["Rust", "C++", "Compilers", "ELF binary patching", "Distributed systems", "Protocol engineering", "Cryptography", "Elliptic curve cryptography", "Threshold signatures", "Zero-knowledge proofs", "Smart contract development", "Vulnerability research", "Developer tooling"],
     "sameAs": [
       "https://github.com/mahmudsudo",
       "https://www.linkedin.com/in/mahmud-b-613575207",
@@ -57,6 +58,7 @@
     <div class="wrap">
       <a class="brand" href="/">mahmudsudo</a>
       <nav aria-label="Primary">
+        <a href="#expertise">Expertise</a>
         <a href="#work">Work</a>
         <a href="#projects">Projects</a>
         <a href="#open-source">Open source</a>
@@ -71,10 +73,10 @@
     <section class="hero" aria-labelledby="top">
       <p class="eyebrow"><span class="dot" aria-hidden="true"></span>Lagos, Nigeria · Open to remote roles</p>
       <h1 id="top">Mahmud Bello</h1>
-      <p class="lede">Systems engineer, Developer Relations , Forward Deployed Engineer. I build <em>protocols, cryptography and developer tooling</em> in Rust.</p>
+      <p class="lede">Systems engineer. I build <em>protocols, cryptography and developer tooling</em> in Rust.</p>
       <p class="intro">
         I have spent six-plus years writing production Rust and C++, mostly on distributed systems,
-        protocol engineering and the tools other developers depend on. I have also worked in building developer communities and in breaking down informations to developers . I work solo or in small teams,
+        protocol engineering and the tools other developers depend on. I work solo or in small teams,
         publish what I build as open source, and have led engineering and developer relations for products
         used by thousands of people.
       </p>
@@ -92,6 +94,34 @@
         <li><b>5,000+</b><span>Users reached while CTO at StreamLivr</span></li>
         <li><b>Zcash grant</b><span>Funding a FROST threshold signature SDK</span></li>
       </ul>
+    </section>
+
+    <section class="block" id="expertise" aria-labelledby="h-exp">
+      <h2 id="h-exp">Expertise</h2>
+      <div>
+        <ul class="cards expertise">
+          <li class="card">
+            <h3>Systems &amp; compiler toolchains</h3>
+            <p>Low-level work in Rust and C/C++. Upstream compiler contributions to Paradigm's Solar, and <code>patch-rs</code>, a section-aware ELF patching tool that hot-swaps function instructions without re-linking.</p>
+            <ul class="tags"><li>Rust</li><li>C/C++</li><li>ELF</li><li>compilers</li></ul>
+          </li>
+          <li class="card">
+            <h3>Applied cryptography &amp; ZK</h3>
+            <p>Research on elliptic curve cryptography, index calculus (Semaev polynomials, F4 Gr&ouml;bner basis solvers) and zero-knowledge proving systems. Contributor to ZK infrastructure, including Ingonyama's Blaze.</p>
+            <ul class="tags"><li>ECC</li><li>ZK proofs</li><li>Gr&ouml;bner bases</li><li>FROST</li></ul>
+          </li>
+          <li class="card">
+            <h3>Offensive security</h3>
+            <p>Vulnerability research on Bugcrowd and HackerOne, focused on enterprise identity providers such as Okta and Auth0. Strongest on logical flaws, including session persistence that undermines zero-trust models, and on auditing AI agent architectures for indirect prompt injection.</p>
+            <ul class="tags"><li>identity</li><li>zero trust</li><li>prompt injection</li></ul>
+          </li>
+          <li class="card">
+            <h3>Web3 &amp; developer tooling</h3>
+            <p>Production EVM smart contract development, protocol integrations and custom CLI automation. Contributed to Spindalis, a polynomial parsing and integration toolkit. Terminal-first workflows, backed by technical writing and advocacy.</p>
+            <ul class="tags"><li>EVM</li><li>CLI</li><li>DevRel</li></ul>
+          </li>
+        </ul>
+      </div>
     </section>
 
     <section class="block" id="work" aria-labelledby="h-work">
@@ -191,6 +221,8 @@
           <li><a class="name" href="https://crates.io/crates/cargomon">cargomon</a><span>nodemon for Rust: rebuilds and reruns your project when files change.</span></li>
           <li><a class="name" href="https://github.com/mahmudsudo/rye_rs">rye_rs</a><span>Laravel and Phoenix-style fullstack framework with CLI scaffolding for Axum or Actix on Postgres, MySQL or SQLite.</span></li>
           <li><a class="name" href="https://github.com/mahmudsudo/social_rs">social_rs</a><span>Reliability-focused social media connector for AI agents, with a RiskGate layer for safe actions.</span></li>
+          <li><code>patch-rs</code><span>Section-aware ELF binary patching: swap function instructions in place without re-linking.</span></li>
+          <li><code>github-code-pusher</code><span>Agentic tooling that pushes code to GitHub for streamlined CI/CD operations.</span></li>
           <li><a class="name" href="https://www.npmjs.com/package/hone-skill">hone</a><span>A comprehension gate for AI-assisted coding, published on npm as <code>hone-skill</code>.</span></li>
         </ul>
         <p class="noprint" style="margin-top:1.25rem;font-family:var(--mono);font-size:.8rem;">
@@ -217,7 +249,7 @@
           <ul>
             <li>Zcash Community Grant (active): FROST threshold signature SDK.</li>
             <li>Hackathon wins across ZkLend, ICP Vietnam and Mina, including international events.</li>
-            <li>Security research on HackerOne as <a href="https://hackerone.com/mhsudo">@mhsudo</a>.</li>
+            <li>Security research on Bugcrowd and HackerOne (<a href="https://hackerone.com/mhsudo">@mhsudo</a>).</li>
           </ul>
         </article>
       </div>
@@ -229,13 +261,15 @@
         <dt>Languages</dt>
         <dd>Rust and C++ (6+ years, production). Go, Elixir and Haskell. TypeScript and React when the job needs it.</dd>
         <dt>Systems</dt>
-        <dd>Distributed systems, protocol engineering, <code>no_std</code> Rust, embedded work on ESP32, compilers and proc macros.</dd>
+        <dd>Distributed systems, protocol engineering, <code>no_std</code> Rust, embedded work on ESP32, compilers and proc macros, ELF binary patching.</dd>
         <dt>Cryptography</dt>
-        <dd>FROST threshold signatures, zk-SNARK proving systems, Poseidon cryptanalysis (active study), post-quantum signatures, applied Bitcoin and Ethereum protocols.</dd>
+        <dd>FROST threshold signatures, zk-SNARK proving systems, elliptic curve cryptography, index calculus and Gr&ouml;bner basis solvers, Poseidon cryptanalysis (active study), post-quantum signatures, applied Bitcoin and Ethereum protocols.</dd>
+        <dt>Web3</dt>
+        <dd>Production EVM smart contracts, protocol integrations, custom CLI automation.</dd>
         <dt>Infrastructure</dt>
         <dd>AWS (EC2, Lambda), Kubernetes, PostgreSQL and MySQL administration, bare-metal operations including RAID and capacity planning.</dd>
         <dt>Security</dt>
-        <dd>Bug bounty research, smart contract security, CompTIA PenTest+.</dd>
+        <dd>Bug bounty research on Bugcrowd and HackerOne, identity provider logic flaws (Okta, Auth0), AI agent prompt injection audits, smart contract security, CompTIA PenTest+.</dd>
         <dt>Developer experience</dt>
         <dd>Developer relations, public speaking, hackathon organizing, technical writing, documentation.</dd>
       </dl>
@@ -274,8 +308,9 @@
     <section class="block" id="contact" aria-labelledby="h-contact">
       <h2 id="h-contact">Contact</h2>
       <div>
-        <p class="contact-big">Hiring for systems, protocol , Developer Relations , FDE or infrastructure work? <a href="mailto:blinkztyler@gmail.com">blinkztyler@gmail.com</a></p>
+        <p class="contact-big">Hiring for systems, protocol or infrastructure work? <a href="mailto:blinkztyler@gmail.com">blinkztyler@gmail.com</a></p>
         <ul class="contact-list">
+          <li><a href="https://mahmudsudo.github.io">mahmudsudo.github.io</a></li>
           <li><a href="https://github.com/mahmudsudo">github.com/mahmudsudo</a></li>
           <li><a href="https://www.linkedin.com/in/mahmud-b-613575207">linkedin.com/in/mahmud-b-613575207</a></li>
           <li><a href="https://crates.io/users/mahmudsudo">crates.io/users/mahmudsudo</a></li>
@@ -287,7 +322,7 @@
 
   <footer>
     <div class="wrap">
-      <span>© 2026 Mahmud Bello</span>
+      <span>© 2026 Mahmud Bello · Cookie-free, privacy-friendly analytics</span>
       <a href="https://github.com/mahmudsudo/mahmudsudo.github.io">Source of this site</a>
     </div>
   </footer>
